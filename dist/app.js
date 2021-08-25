@@ -1,3 +1,4 @@
+"use strict";
 /*-------const num: number, const name: string, const isMale: boolean -------*/
 function add(n1, n2, showBoolean, showString) {
     if (showBoolean) {
@@ -13,12 +14,12 @@ function addJS(n1, n2) {
     }
     return n1 + n2;
 }
-var num1 = "5";
-var num2 = 2.8;
-var showBoolean = true;
-var showString = "Hello";
-var result = add(+num1, num2, showBoolean, showString);
-var resultJS = addJS(5, 7);
+const num1 = "5";
+const num2 = 2.8;
+const showBoolean = true;
+const showString = "Hello";
+const result = add(+num1, num2, showBoolean, showString);
+const resultJS = addJS(5, 7);
 console.log(result);
 console.log(resultJS);
 /*-------const person: object | {} = object -------*/
@@ -37,39 +38,38 @@ console.log(resultJS);
 //   name: "Abdullah",
 //   age: 24,
 // };
-var person = {
+const person = {
     name: "Abdullah",
-    age: 24
+    age: 24,
 };
 console.log(person.name, person.age);
-var product = {
+const product = {
     id: "abc1",
     price: 12.99,
     tags: ["great-offer", "hot-and-new"],
     details: {
         title: "Red Carpet",
-        description: "A great carpet - almost brand-new!"
-    }
+        description: "A great carpet - almost brand-new!",
+    },
 };
 console.log(product);
 /*------- const persons: string[], const persons: number[], const persons: any[] = array -------*/
-var personObj = {
+const personObj = {
     name: "Abdullah",
     age: 24,
-    hobbies: ["Coding", "Sports"]
+    hobbies: ["Coding", "Sports"],
 };
 console.log(personObj);
-var favActivities;
+let favActivities;
 favActivities = ["Sports"];
-for (var _i = 0, _a = personObj.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
+for (const hobby of personObj.hobbies) {
     console.log(hobby);
 }
 /*------- const persons: [number, string],= tuple -------*/
-var person1 = {
+const person1 = {
     name: "Abdullah",
     age: 24,
-    role: ["admin", 1, "customer", 2]
+    role: ["admin", 1, "customer", 2],
 };
 // getting error
 // person1.role = [1, "admin", 2, "customer"]
@@ -90,23 +90,23 @@ var Role1;
     Role1[Role1["User"] = 6] = "User";
     Role1[Role1["Author"] = 7] = "Author";
 })(Role1 || (Role1 = {}));
-var person2 = {
+const person2 = {
     name: "Abdullah",
     age: 24,
-    role: Role1.Author
+    role: Role1.Author, // 7
 };
 console.log(person2);
 /*------- any -------*/
-var mixedArray;
+let mixedArray;
 mixedArray = ["mixed", 2, true];
-var nameAny;
+let nameAny;
 nameAny = 5;
 nameAny = "Abdul";
 console.log(mixedArray);
 console.log(nameAny);
 /*------- union -------*/
 function combine(n1, n2) {
-    var result;
+    let result;
     if (typeof n1 === "number" && typeof n2 === "number")
         result = n1 + n2;
     else
@@ -117,7 +117,7 @@ console.log(combine("Max", 2));
 console.log(combine(2, 2));
 /*------- literal type -------*/
 function combineLiteral(n1, n2, litral) {
-    var result;
+    let result;
     if (litral === "as-number") {
         if (typeof n1 === "number" && typeof n2 === "number")
             return (result = n1 + n2);
@@ -132,7 +132,7 @@ function combineLiteral(n1, n2, litral) {
 console.log(combineLiteral("Max", "2", "as-text"));
 console.log(combineLiteral(2, 2, "as-number"));
 function combineAlises(n1, n2, litral) {
-    var result;
+    let result;
     if (litral === "as-number") {
         if (typeof n1 === "number" && typeof n2 === "number")
             return (result = n1 + n2);
@@ -162,31 +162,31 @@ function printResultFunc(num) {
 console.log("Return type is number by default: " + addFunc(1, 2));
 console.log("Return type is void by default: ", printResultFunc(5));
 /*------- Function type -------*/
-var combineFunc;
+let combineFunc;
 // getting error
 // combineFunc = 5
 combineFunc = addFunc;
 console.log(combineFunc(6, 2));
-var combineFuncPrime;
+let combineFuncPrime;
 combineFuncPrime = addFunc;
 console.log(combineFuncPrime(6, 2));
 /*------- Function types  callbacks -------*/
 function addAndHandle(n1, n2, cb) {
-    var result = n1 + n2;
+    const result = n1 + n2;
     cb(result);
 }
-addAndHandle(5, 7, function (result) {
+addAndHandle(5, 7, (result) => {
     console.log(result);
 });
 /*------- unknown type -------*/
-var userName;
-var userInput;
+let userName;
+let userInput;
 userInput = 9;
 userInput = "Abdul";
 // Type 'unknown' is not assignable to type 'string'.
 // userName = userInput;
-var userName1;
-var userInput1;
+let userName1;
+let userInput1;
 userInput1 = 9;
 userInput1 = "Abdul";
 // error goes away
@@ -195,5 +195,5 @@ userName1 = userInput1;
 function generateError(message, code) {
     throw { message: message, errorCode: code };
 }
-var res = generateError("An error occurred!", 500);
+const res = generateError("An error occurred!", 500);
 console.log(res);

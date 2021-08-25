@@ -7,7 +7,7 @@ function add(n1: number, n2: number, showBoolean: boolean, showString: string) {
   } else console.log(n1 + n2);
 }
 
-function addJS(n1, n2) {
+function addJS(n1: number, n2: number) {
   if (typeof n1 !== "number" || typeof n2 !== "number") {
     throw new Error("Invalid inputs!");
   }
