@@ -147,21 +147,38 @@ new Child().parentName();
 // Private Constructor && Singleton
 
 class Singleton {
-  private static instance: Singleton = Singleton;
-  private constructor(log: string) {}
+  private static instance: Singleton;
+  private log: string;
+  private constructor(log: string) {
+    this.log = log;
+  }
 
-  static setSinglonton() {
+  static setSinglenton(log: string) {
     // if(this.instance){
     //     return this.instance
     // }
     if (Singleton.instance) {
-      return this.instance;
+      return Singleton.instance;
     }
-    return (this.instance = new Singleton("This is singleton"));
+    return (this.instance = new Singleton(log));
+  }
+
+  get getLog() {
+    return this.log;
   }
 }
 
 // Constructor of class 'Singleton' is private and only accessible within the class declaration.
 // console.log(new Singleton("This is first instance."))
 
-console.log(Singleton.setSinglonton());
+const instanceFirst = Singleton.setSinglenton(
+  "This is singleton first instance"
+);
+console.log(instanceFirst.getLog);
+
+const instanceSecond = Singleton.setSinglenton(
+  "This is singleton second instance"
+);
+console.log(instanceSecond.getLog);
+
+console.log(instanceFirst === instanceSecond);
