@@ -259,5 +259,15 @@ function generateError(message: string, code: number): never {
   throw { message: message, errorCode: code };
 }
 
-const res = generateError("An error occurred!", 500);
-console.log(res);
+// const res = generateError("An error occurred!", 500);
+// console.log(res);
+
+/*------- rest parameters -------*/
+
+const addRestPara = (...numbers: number[]) => {
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+console.log(addRestPara(1, 2, 3, 4, 5));

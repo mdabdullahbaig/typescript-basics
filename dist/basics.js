@@ -195,5 +195,12 @@ userName1 = userInput1;
 function generateError(message, code) {
     throw { message: message, errorCode: code };
 }
-const res = generateError("An error occurred!", 500);
-console.log(res);
+// const res = generateError("An error occurred!", 500);
+// console.log(res);
+/*------- rest parameters -------*/
+const addRestPara = (...numbers) => {
+    return numbers.reduce((curResult, curValue) => {
+        return curResult + curValue;
+    }, 0);
+};
+console.log(addRestPara(1, 2, 3, 4, 5));
