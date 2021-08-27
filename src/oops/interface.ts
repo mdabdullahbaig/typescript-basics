@@ -57,13 +57,19 @@ interface Named {
 }
 
 interface Greetable1 extends Named {
+  //optional properties
+  age?: number;
   greet(pharase: string): void;
 }
 
 class GreetName implements Greetable1 {
   name: string;
 
-  constructor(n: string) {
+  constructor(
+    n: string,
+    // optional parameter
+    age?: number
+  ) {
     this.name = n;
   }
   greet(pharase: string) {

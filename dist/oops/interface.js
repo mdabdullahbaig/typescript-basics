@@ -27,7 +27,9 @@ class Greet {
 const greetObj = new Greet("Abdul", 24);
 greetObj.greet("Hi there");
 class GreetName {
-    constructor(n) {
+    constructor(n, 
+    // optional parameter
+    age) {
         this.name = n;
     }
     greet(pharase) {
